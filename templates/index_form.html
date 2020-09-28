@@ -93,7 +93,7 @@
 			</header>
 
 		<!-- Banner -->
-			<section>
+			<section id='banner'>
 				<div src="{{url_for('static', filename='images/banner.jpg')}}">
 
 				<h1>多多分帳<br><br>欠款分帳小能手<br>債務處理不囉嗦</h1>
@@ -451,9 +451,9 @@
 			</footer>
 
 		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/skel.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+			<script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
+			<script src="{{url_for('static', filename='js/skel.min.js')}}"></script>
+			<script src="{{url_for('static', filename='js/util.js')}}"></script>
+			<script src="{{url_for('static', filename='js/main.js')}}"></script>
 	</body>
 </html>
