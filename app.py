@@ -25,9 +25,9 @@ import time
 app = Flask(__name__)
 
 # Channel Access Token
-line_bot_api = LineBotApi('vUtUlqca2fgpAecLUpDBbFoRqphx9k0O+b0Fhl3EYx3UYpdMq3l5sx08j5mCyzGix9bAWH7ZuOeDZrp4jGLB21KEUTpKhrzISxbUCVa95AIlG+KMxPuvIbpQmof8Mf7pL7VKj8L7WqAuZJR6J2rEMQdB04t89/1O/w1cDnyilFU=')
+line_bot_api = LineBotApi('JHhhyAGkeAv1E5c3ylrrPoC1xj5nVbjyxpvFKsenCqcZ43aE1ozhe61IzeVWvHuG8eHehfneXTeNyNVeWig3ThlWoECTzs67Ns6cs4GAINdT4my4BC6xgY88Wn7jAz/cUDpaXEP2FI3y7w7OHYpPVgdB04t89/1O/w1cDnyilFU=')
 # Channel Secret
-handler = WebhookHandler('4348b1d4c70410277ad81af7291692cf')
+handler = WebhookHandler('4208ae25a46b2c44a6a1823268d22232')
 
 
 
