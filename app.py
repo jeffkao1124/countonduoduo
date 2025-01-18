@@ -12,7 +12,6 @@ from linebot.exceptions import (InvalidSignatureError)
 from linebot.models import *
 
 import requests
-from dbModel import *
 
 app = Flask(__name__)
 
@@ -59,66 +58,66 @@ def get_history_list():   #取得最新資料
 def handle_message(event):
     input_text = event.message.text
     history_list = get_history_list()
-    if history_list[0]['type'] == 'user':      #個人部分
-        selfId = history_list[0]['user_id']
-        if (history_list[0]['Status'] == 'save') and ('記帳' in input_text):
-            output_text='記帳成功'
-        elif input_text == '@官網':
-            output_text = 'https://reurl.cc/4yjNyY'
-        elif input_text =='@help':
-            output_text='請直接把多多分帳邀請至群組以解鎖分帳功能唷~'
+    # if history_list[0]['type'] == 'user':      #個人部分
+    #     selfId = history_list[0]['user_id']
+    #     if (history_list[0]['Status'] == 'save') and ('記帳' in input_text):
+    #         output_text='記帳成功'
+    #     elif input_text == '@官網':
+    #         output_text = 'https://reurl.cc/4yjNyY'
+    #     elif input_text =='@help':
+    #         output_text='請直接把多多分帳邀請至群組以解鎖分帳功能唷~'
 
-        elif '多多公布欄' in input_text:
-            output_text='多多感謝您的體諒！我會在群組中繼續為大家服務。'
-        elif input_text =='理財':            
-            line_bot_api.reply_message(  
-            event.reply_token,
-            TemplateSendMessage(
-                alt_text='Buttons template',
-                template=ButtonsTemplate(
-                    title='理財小幫手',
-                    text='請選擇功能',
-                    actions=[
-                        URITemplateAction(
-                            label='股市',
-                            uri='https://tw.stock.yahoo.com/'
-                        ),
-                        URITemplateAction(
-                            label='匯率',
-                            uri='https://rate.bot.com.tw/xrt?Lang=zh-TW'
-                        ),
-                        URITemplateAction(
-                            label='財經新聞',
-                            uri='https://www.msn.com/zh-tw/money'
-                        )
-                        ]
-                    )
-                )
-            )
+    #     elif '多多公布欄' in input_text:
+    #         output_text='多多感謝您的體諒！我會在群組中繼續為大家服務。'
+    #     elif input_text =='理財':            
+    #         line_bot_api.reply_message(  
+    #         event.reply_token,
+    #         TemplateSendMessage(
+    #             alt_text='Buttons template',
+    #             template=ButtonsTemplate(
+    #                 title='理財小幫手',
+    #                 text='請選擇功能',
+    #                 actions=[
+    #                     URITemplateAction(
+    #                         label='股市',
+    #                         uri='https://tw.stock.yahoo.com/'
+    #                     ),
+    #                     URITemplateAction(
+    #                         label='匯率',
+    #                         uri='https://rate.bot.com.tw/xrt?Lang=zh-TW'
+    #                     ),
+    #                     URITemplateAction(
+    #                         label='財經新聞',
+    #                         uri='https://www.msn.com/zh-tw/money'
+    #                     )
+    #                     ]
+    #                 )
+    #             )
+    #         )
 
-    elif history_list[0]['type'] == 'room':  #聊天室部分
-        Carousel_template = TemplateSendMessage(
-                            alt_text='請把我加入群組',
-                            template=ImageCarouselTemplate(
-                            columns=[
-            ImageCarouselColumn(
-                image_url="https://i.imgur.com/wUob12p.jpg",
-                action=URITemplateAction(
-                    uri="https://i.imgur.com/wUob12p.jpg"
-                )
-            ),
-            ImageCarouselColumn(
-                image_url="https://i.imgur.com/MRMWivy.jpg",
-                action=URITemplateAction(
-                    uri="https://i.imgur.com/MRMWivy.jpg"
-                )
-            )
-        ]     
-                        )
-                    )
-        line_bot_api.reply_message(event.reply_token,Carousel_template)    
+    # elif history_list[0]['type'] == 'room':  #聊天室部分
+    #     Carousel_template = TemplateSendMessage(
+    #                         alt_text='請把我加入群組',
+    #                         template=ImageCarouselTemplate(
+    #                         columns=[
+    #         ImageCarouselColumn(
+    #             image_url="https://i.imgur.com/wUob12p.jpg",
+    #             action=URITemplateAction(
+    #                 uri="https://i.imgur.com/wUob12p.jpg"
+    #             )
+    #         ),
+    #         ImageCarouselColumn(
+    #             image_url="https://i.imgur.com/MRMWivy.jpg",
+    #             action=URITemplateAction(
+    #                 uri="https://i.imgur.com/MRMWivy.jpg"
+    #             )
+    #         )
+    #     ]     
+    #                     )
+    #                 )
+    #     line_bot_api.reply_message(event.reply_token,Carousel_template)    
 
-    else:  #群組部分
+    # else:  #群組部分
         selfGroupId = history_list[0]['group_id']
         if (history_list[0]['Status'] == 'set') and ('@分帳設定' in input_text):
             groupNumber=get_groupPeople(history_list,1)
