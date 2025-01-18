@@ -11,17 +11,6 @@ from linebot import (LineBotApi, WebhookHandler)
 from linebot.exceptions import (InvalidSignatureError)
 from linebot.models import *
 
-import requests
-from bs4 import BeautifulSoup
-from dbModel import *
-from datetime import datetime
-import json
-from sqlalchemy import desc
-import numpy as np
-import sys
-import re
-import time
-
 
 app = Flask(__name__)
 
