@@ -11,7 +11,7 @@ from linebot import (LineBotApi, WebhookHandler)
 from linebot.exceptions import (InvalidSignatureError)
 from linebot.models import *
 
-import requests
+#import requests
 
 app = Flask(__name__)
 
@@ -45,32 +45,23 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     input_text = event.message.text
-        if input_text== '@官網':
-            output_text = 'https://reurl.cc/4yjNyY'
 
-        elif input_text=='@桌遊':
-            output_text = str(get_Boardgame())
+    if input_text == '啾啾啾':
+        output_text = '啾啾啾'
 
-        elif input_text=='@電影':
-            output_text = str(get_movie())
+    elif input_text == '逛夜市' or input_text == '烤小鳥' or input_text == '@吳柏震 ' or input_text == '@林瑋晟 ' or input_text == '@王奕凱 ' or input_text == '@高子承 ' or input_text == '@廖奕翔 ':
+        output_text = '不要吃焦阿巴'
 
-        elif input_text == '啾啾啾':
-            output_text = '啾啾啾'
+    elif input_text == '@廖擊敗':
+        output_text = '廖奕翔還錢 操!!'
 
-        elif input_text == '逛夜市' or input_text == '烤小鳥' or input_text == '@吳柏震 ' or input_text == '@林瑋晟 ' or input_text == '@王奕凱 ' or input_text == '@高子承 ' or input_text == '@廖奕翔 ':
-            output_text = '不要吃焦阿巴'
+    elif input_text == 'debug好累':
+        output_text = '關我屁事，我已經好幾天沒睡了=='
 
-        elif input_text == '@廖擊敗':
-            output_text = '廖奕翔還錢 操!!'
+    elif input_text ==  '乖狗狗':
+        line_bot_api.reply_message(event.reply_token, StickerSendMessage(package_id=1, sticker_id=2))
 
-        elif input_text == 'debug好累':
-            output_text = '關我屁事，我已經好幾天沒睡了=='
-
-        elif input_text ==  '乖狗狗':
-            line_bot_api.reply_message(event.reply_token, StickerSendMessage(package_id=1, sticker_id=2))
-
-        line_bot_api.reply_message(event.reply_token, TextSendMessage (output_text) )
-        
+    line_bot_api.reply_message(event.reply_token, TextSendMessage (output_text) )
 
 
 import os
