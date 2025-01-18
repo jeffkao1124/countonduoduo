@@ -20,9 +20,9 @@ line_bot_api = LineBotApi('JHhhyAGkeAv1E5c3ylrrPoC1xj5nVbjyxpvFKsenCqcZ43aE1ozhe
 # Channel Secret
 handler = WebhookHandler('4208ae25a46b2c44a6a1823268d22232')
 
-@app.route("/")
-def home():
-    return 'home OK'
+# @app.route("/")
+# def home():
+#     return 'home OK'
 
 #爬蟲取得匯率
 def get_TodayRate(mode):
@@ -1156,8 +1156,10 @@ def handle_message(event):
         
 
 
+import os
 if __name__ == "__main__":
-    app.run()
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
 
 
 # countonduoduo origin version    
