@@ -1,4 +1,5 @@
 from flask import Flask, request, abort
+
 from linebot import (
     LineBotApi, WebhookHandler
 )
@@ -6,21 +7,6 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import *
-from linebot import (LineBotApi, WebhookHandler)
-from linebot.exceptions import (InvalidSignatureError)
-from linebot.models import *
-
-
-import requests
-from bs4 import BeautifulSoup
-from dbModel import *
-from datetime import datetime
-import json
-from sqlalchemy import desc
-import numpy as np
-import sys
-import re
-import time
 
 app = Flask(__name__)
 
@@ -28,8 +14,6 @@ app = Flask(__name__)
 line_bot_api = LineBotApi('JHhhyAGkeAv1E5c3ylrrPoC1xj5nVbjyxpvFKsenCqcZ43aE1ozhe61IzeVWvHuG8eHehfneXTeNyNVeWig3ThlWoECTzs67Ns6cs4GAINdT4my4BC6xgY88Wn7jAz/cUDpaXEP2FI3y7w7OHYpPVgdB04t89/1O/w1cDnyilFU=')
 # Channel Secret
 handler = WebhookHandler('4208ae25a46b2c44a6a1823268d22232')
-
-
 
 # 監聽所有來自 /callback 的 Post Request
 @app.route("/callback", methods=['POST'])
@@ -56,6 +40,7 @@ import os
 if __name__ == "__main__":
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port)
+
 
 
 # countonduoduo origin version    
