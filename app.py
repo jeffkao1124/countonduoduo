@@ -60,20 +60,6 @@ def get_TodayRate(mode):
     else:
         return 1
 
-def get_movie():   #電影討論度
-    movies = []
-    url_1= "https://movies.yahoo.com.tw/chart.html"
-    resp_1 = requests.get(url_1)
-    ms = BeautifulSoup(resp_1.text,"html.parser")
-
-    ms.find_all("div","rank_txt")
-    movies.append(ms.find('h2').text)
-
-    for rank_txt in ms.find_all("div","rank_txt"):
-        movies.append(rank_txt.text.strip())
-
-    return movies
-
 
 def get_Boardgame():
     boardgame= []
@@ -110,9 +96,6 @@ def handle_message(event):
     input_text = event.message.text
     if input_text=='@桌遊':
         output_text = str(get_Boardgame())
-
-    elif input_text=='@電影':
-        output_text = str(get_movie())
         
     elif input_text == '啾啾啾':
         output_text = '啾啾啾'
