@@ -1,5 +1,11 @@
-flask==1.0.2
+line-bot-sdk
+flask
 gunicorn
+google-api-python-client
+google-auth-httplib2
+google-auth-oauthlib
+requests
+BeautifulSoup4
 psycopg2
 Flask-Migrate
 Flask-Script
@@ -10,3 +16,5 @@ MarkupSafe==0.23
 Werkzeug==0.15.5
 jinja2
 datetime
+numpy
+APScheduler
