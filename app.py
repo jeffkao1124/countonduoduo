@@ -42,6 +42,18 @@ def callback():
 #     message = TextSendMessage(text=event.message.text)
 #     line_bot_api.reply_message(event.reply_token, message)
 
+def get_history_list():   #取得最新資料
+    data_UserData = usermessage.query.order_by(usermessage.birth_date.desc()).limit(1).all()
+    history_dic = {}
+    history_list = []    
+    for _data in data_UserData:
+        history_dic['Status'] = _data.status
+        history_dic['type'] = _data.type
+        history_dic['user_id'] = _data.user_id
+        history_dic['group_id'] = _data.group_id
+        history_list.append(history_dic)
+    return history_list
+
 # 處理訊息
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
