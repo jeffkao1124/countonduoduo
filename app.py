@@ -14,7 +14,7 @@ from linebot.models import *
 import requests
 from bs4 import BeautifulSoup
 
-# from dbModel import *
+from dbModel import *
 # from datetime import datetime
 # import json
 # from sqlalchemy import desc
