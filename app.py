@@ -13,6 +13,18 @@ from linebot.models import *
 
 import requests
 from bs4 import BeautifulSoup
+import psycopg2
+
+conn=psycopg2.connect(database=d3oi4f2mbceg54,user=udgq2gm7vpunm4,password=p22b156e475e113aaee82125778740a9c74bcd22f0d0705a8a1fc89502ebfe2f4,host=c9mq4861d16jlm.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com,port=5432)
+cur=conn.cursor()
+
+cur.execute('SELECT VERSION()')
+results=cur.fetchall()
+print ("Database version : %s " % results)
+
+conn.commit()
+cur.close()
+
 # from dbModel import *
 # from datetime import datetime
 # import json
